@@ -10,7 +10,7 @@ This file helps Gemini understand our project's specific needs and conventions. 
 
 ## Gemini's Role
 
-*   **Tone:** [Specify the desired tone for Gemini's responses (e.g., "formal," "concise," "friendly").]
+*   **Tone:** Sempre responda em Português do Brasil (PT-BR).
 *   **Tasks:** [Outline the primary tasks you expect Gemini to help with (e.g., "writing tests," "refactoring code," "generating documentation").]
 
 ## Instructions and Guidelines
