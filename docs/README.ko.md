@@ -36,7 +36,7 @@ Context7은 최신 코드 예제와 문서를 LLM의 컨텍스트에 즉시 가�
 
 ## 📚 프로젝트 추가하기
 
-Context7에 여러분이 좋아하는 라이브러리를 추가(또는 업데이트)하는 방법을 알아보려면 [프로젝트 추가 가이드](./docs/adding-projects.md)를 확인하세요.
+Context7에 여러분이 좋아하는 라이브러리를 추가(또는 업데이트)하는 방법을 알아보려면 [프로젝트 추가 가이드](./adding-projects.md)를 확인하세요.
 
 ## 🛠️ 시작하기
 
@@ -311,6 +311,18 @@ Visual Studio MCP 설정 파일에 다음을 추가하세요(자세한 내용은
 {
   "mcpServers": {
     "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp"
+    }
+  }
+}
+```
+
+또는 로컬 서버의 경우:
+
+```json
+{
+  "mcpServers": {
+    "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"]
     }
@@ -396,6 +408,30 @@ Claude Desktop의 `claude_desktop_config.json` 파일에 다음을 추가하세�
 ```
 
 저장되면 채팅에 `get-library-docs`를 입력한 다음 Context7 문서 ID(예: `get-library-docs /nuxt/ui`)를 입력합니다. 자세한 정보는 [BoltAI 문서 사이트](https://docs.boltai.com/docs/plugins/mcp-servers)에서 확인할 수 있습니다. iOS용 BoltAI의 경우 [이 가이드](https://docs.boltai.com/docs/boltai-mobile/mcp-servers)를 참조하세요.
+
+</details>
+
+<details>
+<summary><b>Copilot Coding Agent 설치</b></summary>
+
+아래 설정을 Copilot Coding Agent의 `mcp` 섹션(Repository->Settings->Copilot->Coding agent->MCP configuration)에 추가하세요:
+
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "tools": [
+        "get-library-docs",
+        "resolve-library-id"
+      ]
+    }
+  }
+}
+```
+
+자세한 내용은 [공식 GitHub 문서](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/agents/copilot-coding-agent/extending-copilot-coding-agent-with-mcp)를 참고하세요.
 
 </details>
 
@@ -702,6 +738,51 @@ Opencode 설정 파일에 다음을 추가하세요. 자세한 내용은 [Openco
     }
   }
 }
+```
+
+</details>
+<details>
+
+<summary><b>Kiro에 설치</b></summary>
+
+자세한 내용은 [Kiro 모델 컨텍스트 프로토콜 문서](https://kiro.dev/docs/mcp/configuration/)를 참조하세요.
+
+1. `Kiro` > `MCP Servers`로 이동합니다.
+2. `+ Add` 버튼을 클릭하여 새 MCP 서버를 추가합니다.
+3. 아래에 주어진 설정을 붙여넣습니다:
+
+```json
+{
+  "mcpServers": {
+    "Context7": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@upstash/context7-mcp"
+    ],
+    "env": {},
+    "disabled": false,
+    "autoApprove": []
+    }
+  }
+}
+
+```
+
+4. `Save`을 클릭하여 변경 사항을 적용합니다.
+
+</details>
+<details>
+<summary><b>OpenAI Codex에 설치</b></summary>
+
+자세한 내용은 [OpenAI Codex](https://github.com/openai/codex)를 참조하세요.
+
+OpenAI Codex MCP 서버 설정에 다음 설정을 추가하세요:
+
+```toml
+[mcp_servers.context7]
+args = ["-y", "@upstash/context7-mcp"]
+command = "npx"
 ```
 
 </details>
